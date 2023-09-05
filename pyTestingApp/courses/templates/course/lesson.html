@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %} <link rel="stylesheet" type="text/css" href="{% static 'courses/lesson.css' %}">
+    <div class="lesson-field">
+        <div class="row">
+            <div class="col-md-12">
+                <a class="text" style="color:#0d3560; margin:10px;" href="{% url 'back-to-course' course_id %}"><< Вернуться на страницу курса</a>
+                <br><br>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <center><div class="card-header">Уроки</div></center>
+                    <ul class="list-group list-group-flush">
+                    {% for lesson in lessons %}
+                        <li class="list-group-item"><a href="{% url 'lesson-open' course_id lesson.id %}">{{lesson.name}}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="lesson-button">
+                    <div class="row">
+                        <button style="background-color:#6692c0; margin:10px; border-radius: 5px;" class="col-md-10"><a class="text" href="{% url 'lesson-edit' course_id lesson.id %}">Редактировать урок</a></button>
+                        <button style="background-color:#6692c0; margin:10px; border-radius: 5px;" class="col-md-10"><a class="text" href="{% url 'lesson-delete' course_id lesson.id %}">Удалить урок</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="lesson-header">
+                    <div class="row">
+                        <div class="col-md-9"><h1>{{lesson.name}}</h1></div>
+                        <div class="col-md-3">
+                            <a class="help" href="#help-window">Как пользоваться системой?</a>
+                            <div class="help-window" id="help-window">
+                            <div class="help-window-content">
+                                <div class="help-window-text">
+                                    <h1>Как пользоваться системой?</h1>
+                                    <p>Урок состоит из трёх разделов, которые выполняются друг за другом.</p>
+                                    <h5>1 раздел: Теория</h5>
+                                    <p>Первым делом необходимо ознакомиться с теоритическим материалом урока и разобрать
+                                    его, чтобы далее можно бвло применять свои знания на практике.</p>
+                                    <h5>2 этап: Задание</h5>
+                                    <p>В данном разделе представлено описание задания.</p>
+                                    <h5>3 этап: Практика</h5>
+                                    <p>Здесь происходит описание программной реализации задания. Введите код
+                                        в поле Code Area, после чего нажмите на кнопку "Запустить", чтобы отправить код на
+                                        проверку.</p>
+                                </div>
+                                <a class="close" href="#">X</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-nav">
+                    <div class="row">
+                        <button class="col-md-4"><a class="text" href="{% url 'theory' course_id lesson.id %}">Теория</a></button>
+                        <button class="col-md-4"><a class="text" href="{% url 'task' course_id lesson.id %}">Задание</a></button>
+                        <button class="col-md-4"><a class="text" href="{% url 'practice' course_id lesson.id %}">Практика</a></button>
+                    </div>
+                </div>
+                <div class="work-place">
+                    {% block work-content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

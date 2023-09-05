@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="course-create">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <h1>Создание курса</h1>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

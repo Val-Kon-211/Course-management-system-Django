@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!--{% load static %} <link rel="stylesheet" type="text/css" href="{% static 'courses/course-create.css' %}">-->
+      <div class="lesson-create">
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <h1>Создание урока</h1>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

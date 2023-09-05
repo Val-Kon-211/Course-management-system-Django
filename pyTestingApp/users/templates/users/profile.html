@@ -1,0 +1,33 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.get_username }}</h2>
+        </div>
+        <h4>Мои курсы</h4>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    {% for course in courses %}
+                        <div class="col-sm-4">
+                            <div class='container-poster'>
+                                <div class='card'>
+                                    {% load static %}
+                                    <img class="card-img-top" src="{% static 'images/fon.jpg' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <p class="sub-heading">Курс</p>
+                                        <a href="{% url 'course-open' course.id%}" class="main-link" target="_self">
+                                            <h2>{{course.name}}</h2>
+                                        </a>
+                                        <p>{{course.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

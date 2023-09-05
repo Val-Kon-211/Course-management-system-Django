@@ -1,0 +1,34 @@
+card {
+  min-width: 15px;
+}
+
+.course-nav button {
+    vertical-align: top;
+    min-height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background: #6692c0;
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: #ffffff;
+}
+
+.add-lesson button {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: .4em 1em calc(.4em + 3px);
+  border: 0;
+  background: #6692c0;
+  transition: 0.2s;
+  margin: 10px;
+}
+
+a.text:active,
+a.text:hover,
+a.text{
+  text-decoration: none;
+  color: #ffffff;
+}

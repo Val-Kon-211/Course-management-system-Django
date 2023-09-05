@@ -1,0 +1,66 @@
+.container-poster {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 10px;
+}
+
+h2, a, p, span {
+  color: #0d3560;
+}
+
+a.text:active,
+a.text:hover,
+a.text {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.course-name a {
+  font-size: 5vw;
+  text-decoration: none;
+  transition: 0.2s;
+
+  &:hover,
+  &:focus {
+    color: #ff8a00;
+    outline: none;
+  }
+}
+
+.course-author a {
+  font-size: 2vw;
+  text-decoration: none;
+  transition: 0.2s;
+
+  &:hover,
+  &:focus {
+    color: #ff8a00;
+    outline: none;
+  }
+}
+
+button {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: .4em 1em calc(.4em + 3px);
+  border: 0;
+  background: #6692c0;
+  transition: 0.2s;
+}
+
+.row {
+    padding: 10px;
+}

@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %} <link rel="stylesheet" type="text/css" href="{% static 'courses/course.css' %}">
+    <div class="course-area">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card">
+                    <center><div class="card-header">Уроки</div></center>
+                    {% if lessons %}
+                        <ul class="list-group list-group-flush">
+                        {% for lesson in lessons %}
+                            {% if part %}
+                                <li class="list-group-item"><a href="{% url 'lesson-open' course.id lesson.id %}">{{lesson.name}}</a></li>
+                            {% else %}
+                                <li class="list-group-item"><a style="pointer-events: none" href="{% url 'lesson-open' course.id lesson.id %}">{{lesson.name}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">...</li>
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="add-lesson">
+                    <button><a class="text" href="{% url 'lesson-create' course.id %}">Добавить урок</a></button>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{course.name}}</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>{{course.description}}</h5>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="course-nav">
+                            {% if part %}
+                            <div class="row" style="padding: 10px;">
+                                <button class="col-md-4"><a class="text">Открыть список участников</a></button>
+                                <button class="col-md-4"><a class="text" href="{% url 'course-edit' course.id %}">Редактировать курс</a></button>
+                                <button class="col-md-4"><a class="text" href="{% url 'course-delete' course.id %}">Удалить курс</a></button>
+                            </div>
+                            {% else %}
+                            <div method="POST" class="row" style="padding: 10px;">
+                                <button class="col-md-12"><a class="text" href="{% url 'course-open' course.id %}">Записаться на курс</a></button>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %} <link rel="stylesheet" type="text/css" href="{% static 'courses/courses.css' %}">
+    <div>
+        <div class="row">
+            {% for course, authors in courses.items %}
+                <div class="col-sm-4">
+                    <div class='container-poster'>
+                        <div class='card'>
+                            {% load static %}
+                            <img class="card-img-top" src="{% static 'images/fon.jpg' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p>Курс</p>
+                                <a class="course-name" href="{% url 'course-open' course.id%}" target="_self">
+                                    <h2>{{course.name}}</h2>
+                                </a>
+                                <p>{{course.description}}</p>
+                                <p>Автор курса:
+                                {% for author in authors %}
+                                    <a class="course-author" style="color: #6692c0;" href="{% url 'profile' user_id=author.user.id%}">{{ author.user.get_full_name }}</a>
+                                {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <center><button><a class="text" href="{% url 'course-create' %}">Добавить курс</a></button></center>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

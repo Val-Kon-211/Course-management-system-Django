@@ -1,0 +1,2 @@
+test_1 FAILED
+test_2 PASSED
